@@ -219,23 +219,27 @@
     }
 
     .info-box li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
+      position: relative;
+      display: block;
       min-width: 0;
       word-break: keep-all;
-      overflow-wrap: anywhere;
+      overflow-wrap: normal;
+    }
+
+    .info-box ul li {
+      padding-left: 14px;
     }
 
     .info-box ul li::before {
       content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
       width: 5px;
       height: 5px;
-      margin-top: 0.64em;
       border-radius: 50%;
       background: var(--accent);
       opacity: 0.65;
-      flex: 0 0 5px;
     }
 
     .info-box ol {
@@ -244,14 +248,16 @@
 
     .info-box ol li {
       counter-increment: day;
-      gap: 9px;
+      padding-left: 27px;
     }
 
     .info-box ol li::before {
       content: counter(day);
+      position: absolute;
+      left: 0;
+      top: 0.1em;
       width: 18px;
       height: 18px;
-      margin-top: 0.15em;
       border-radius: 50%;
       background: var(--accent-light);
       color: var(--accent);
@@ -259,7 +265,6 @@
       font-weight: 800;
       line-height: 18px;
       text-align: center;
-      flex: 0 0 18px;
     }
 
     .info-box li + li {
@@ -284,6 +289,16 @@
       .card {
         padding: 24px 20px;
         border-radius: 24px;
+      }
+
+      .info-box {
+        padding: 15px 16px;
+      }
+
+      .info-box ul,
+      .info-box ol {
+        font-size: 13.5px;
+        line-height: 1.62;
       }
 
       h1 {
@@ -334,21 +349,14 @@
         르방 50g에 통밀 10g, 강력분 40g, 물 40g을 넣어주세요.
       </p>
 
-      <div class="ratio" aria-label="기준 비율">
-        <span class="chip">르방 1</span>
-        <span class="chip">밀가루 1</span>
-        <span class="chip">물 0.8</span>
-        <span class="chip">통밀 20%</span>
-        <span class="chip">강력분 80%</span>
-      </div>
 
       <div class="info-sections">
         <section class="info-box" aria-labelledby="ratio-title">
           <h2 id="ratio-title">기준 비율 설명</h2>
           <ul>
-            <li>르방 <strong>50g</strong> + 통밀 <strong>10g</strong> + 강력분 <strong>40g</strong> + 물 <strong>40g</strong></li>
-            <li>르방 : 밀가루 : 물 = <strong>1 : 1 : 0.8</strong></li>
-            <li>밀가루는 통밀 <strong>20%</strong>, 강력분 <strong>80%</strong>로 계산해요.</li>
+            <li>르방 50g + 통밀 10g + 강력분 40g + 물 40g</li>
+            <li>르방 : 밀가루 : 물 = 1 : 1 : 0.8</li>
+            <li>밀가루는 통밀 20%, 강력분 80%로 계산해요.</li>
           </ul>
         </section>
 
