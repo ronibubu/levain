@@ -12,7 +12,7 @@
       --muted: #7b6d62;
       --accent: #8b5e3c;
       --accent-light: #f2e5d8;
-      --border: #eadfD4;
+      --border: #eadfd4;
       --shadow: 0 16px 40px rgba(85, 55, 32, 0.12);
     }
 
@@ -49,7 +49,7 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
       padding: 7px 12px;
       border-radius: 999px;
       background: var(--accent-light);
@@ -186,6 +186,95 @@
       font-weight: 700;
     }
 
+
+    .info-sections {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-box {
+      background: #fffdf9;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px 17px;
+      overflow: hidden;
+    }
+
+    .info-box h2 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    .info-box ul,
+    .info-box ol {
+      margin: 0;
+      padding: 0;
+      color: #5f5146;
+      font-size: 14px;
+      line-height: 1.55;
+      list-style: none;
+    }
+
+    .info-box li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      min-width: 0;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    .info-box ul li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      margin-top: 0.64em;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.65;
+      flex: 0 0 5px;
+    }
+
+    .info-box ol {
+      counter-reset: day;
+    }
+
+    .info-box ol li {
+      counter-increment: day;
+      gap: 9px;
+    }
+
+    .info-box ol li::before {
+      content: counter(day);
+      width: 18px;
+      height: 18px;
+      margin-top: 0.15em;
+      border-radius: 50%;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 18px;
+      text-align: center;
+      flex: 0 0 18px;
+    }
+
+    .info-box li + li {
+      margin-top: 5px;
+    }
+
+    .info-box strong {
+      color: var(--accent);
+    }
+
+    .eyebrow .emoji {
+      font-size: 16px;
+      line-height: 1;
+    }
+
     @media (max-width: 420px) {
       body {
         padding: 16px;
@@ -210,7 +299,7 @@
 <body>
   <main>
     <section class="card" aria-labelledby="title">
-      <div class="eyebrow">🍞 르방 밥주기</div>
+      <div class="eyebrow"><span class="emoji">🍞</span> 르방 밥주기</div>
       <h1 id="title">르방 리프레시 계산기</h1>
       <p class="description">
         르방 양을 입력하면 통밀, 강력분, 물 양을 자동으로 계산해요.
@@ -253,9 +342,37 @@
         <span class="chip">강력분 80%</span>
       </div>
 
-      <p class="note">
-        기준 레시피: 르방 50g + 통밀 10g + 강력분 40g + 물 40g
-      </p>
+      <div class="info-sections">
+        <section class="info-box" aria-labelledby="ratio-title">
+          <h2 id="ratio-title">기준 비율 설명</h2>
+          <ul>
+            <li>르방 <strong>50g</strong> + 통밀 <strong>10g</strong> + 강력분 <strong>40g</strong> + 물 <strong>40g</strong></li>
+            <li>르방 : 밀가루 : 물 = <strong>1 : 1 : 0.8</strong></li>
+            <li>밀가루는 통밀 <strong>20%</strong>, 강력분 <strong>80%</strong>로 계산해요.</li>
+          </ul>
+        </section>
+
+        <section class="info-box" aria-labelledby="starter-title">
+          <h2 id="starter-title">르방 만들기 과정</h2>
+          <ol>
+            <li>1일차: 통밀 50g + 물 50g</li>
+            <li>2일차: 1일차 르방 50g + 통밀 50g + 물 50g</li>
+            <li>3일차: 2일차 르방 50g + 통밀 50g + 물 50g</li>
+            <li>4일차: 3일차 르방 50g + 통밀 50g + 물 50g</li>
+            <li>5일차: 4일차 르방 50g + 통밀 10g + 강력분 40g + 물 40g</li>
+          </ol>
+        </section>
+
+        <section class="info-box" aria-labelledby="caution-title">
+          <h2 id="caution-title">주의사항</h2>
+          <ul>
+            <li>단위는 g입니다.</li>
+            <li>르방이 담긴 통 무게만 재서 통에 적어두면 계량하기 편해요.</li>
+            <li>실온, 온도, 밀가루 상태에 따라 발효 속도는 달라질 수 있어요.</li>
+            <li>냄새, 부피 증가, 기포를 함께 확인해주세요.</li>
+          </ul>
+        </section>
+      </div>
     </section>
   </main>
 
